@@ -37,8 +37,9 @@ while cap.isOpened():
 
     # 5. Detekcja
     results = model(frame)[0]  # YOLOv8 returns list; take the first
-    annotated_frame = results.plot()  # rysuje boxy, etykiety itd.
-    out.write(annotated_frame)
+
+    # Create a copy of the frame to draw filtered detections
+    filtered_frame = frame.copy()
 
     if results.boxes is not None:
         boxes = results.boxes
@@ -48,16 +49,21 @@ while cap.isOpened():
             if class_name in classes:
                 # Koordynaty bboxa
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
-                
+
+                # Draw the bounding box and label on the filtered frame
+                cv.rectangle(filtered_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                cv.putText(filtered_frame, class_name, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
                 # Wytnij obiekt
                 cropped = frame[y1:y2, x1:x2]
 
                 # Zapisz obrazek
-                filename =os.path.join("detected_objects", f"frame{frame_count:04d}_{class_name}_{object_id}.jpg")
+                filename = os.path.join("detected_objects", f"frame{frame_count:04d}_{class_name}_{object_id}.jpg")
                 cv.imwrite(filename, cropped)
                 object_id += 1
-            
+
+    # Write the filtered frame to the output video
+    out.write(filtered_frame)
     frame_count += 1
 
 # 8. Zwolnienie zasobów
