@@ -1,0 +1,250 @@
+name,code,language-short,driving-direction
+Aruba,AW,nl,right
+Afghanistan,AF,ps,right
+Angola,AO,pt,right
+Anguilla,AI,,left
+Åland Islands,AX,,right
+Albania,AL,sq,right
+Andorra,AD,,right
+United Arab Emirates,AE,ar,right
+Argentina,AR,es,right
+Armenia,AM,hy,right
+American Samoa,AS,,right
+Antarctica,AQ,,right
+French Southern Territories,TF,,right
+Antigua and Barbuda,AG,,left
+Australia,AU,,left
+Austria,AT,de,right
+Azerbaijan,AZ,az,right
+Burundi,BI,fr,right
+Belgium,BE,nl,right
+Benin,BJ,fr,right
+"Bonaire, Sint Eustatius and Saba",BQ,,right
+Burkina Faso,BF,fr,right
+Bangladesh,BD,bn,left
+Bulgaria,BG,bg,right
+Bahrain,BH,ar,right
+Bahamas,BS,,right
+Bosnia and Herzegovina,BA,bs,right
+Saint Barthélemy,BL,,right
+Belarus,BY,be,right
+Belize,BZ,,right
+Bermuda,BM,,left
+"Bolivia, Plurinational State of",BO,,right
+Brazil,BR,pt,right
+Barbados,BB,,right
+Brunei Darussalam,BN,,right
+Bhutan,BT,dz,left
+Bouvet Island,BV,,right
+Botswana,BW,,left
+Central African Republic,CF,fr,right
+Canada,CA,,right
+Cocos (Keeling) Islands,CC,,right
+Switzerland,CH,de,right
+Chile,CL,es,right
+China,CN,zh,right
+Côte d'Ivoire,CI,,right
+Cameroon,CM,,right
+"Congo, The Democratic Republic of the",CD,,right
+Congo,CG,,right
+Cook Islands,CK,,left
+Colombia,CO,es,right
+Comoros,KM,ar,right
+Cabo Verde,CV,,right
+Costa Rica,CR,es,right
+Cuba,CU,es,right
+Curaçao,CW,,right
+Christmas Island,CX,,right
+Cayman Islands,KY,,right
+Cyprus,CY,el,left
+Czechia,CZ,,right
+Germany,DE,de,right
+Djibouti,DJ,fr,right
+Dominica,DM,,left
+Denmark,DK,da,right
+Dominican Republic,DO,es,right
+Algeria,DZ,ar,right
+Ecuador,EC,es,right
+Egypt,EG,ar,right
+Eritrea,ER,ti,right
+Western Sahara,EH,es,right
+Spain,ES,es,right
+Estonia,EE,et,right
+Ethiopia,ET,am,right
+Finland,FI,fi,right
+Fiji,FJ,,left
+Falkland Islands (Malvinas),FK,,right
+France,FR,fr,right
+Faroe Islands,FO,fo,right
+"Micronesia, Federated States of",FM,,right
+Gabon,GA,fr,right
+United Kingdom,GB,,left
+Georgia,GE,ka,right
+Guernsey,GG,,right
+Ghana,GH,,right
+Gibraltar,GI,,right
+Guinea,GN,fr,right
+Guadeloupe,GP,fr,right
+Gambia,GM,,right
+Guinea-Bissau,GW,pt,right
+Equatorial Guinea,GQ,es,right
+Greece,GR,el,right
+Grenada,GD,,left
+Greenland,GL,kl,right
+Guatemala,GT,es,right
+French Guiana,GF,fr,right
+Guam,GU,,right
+Guyana,GY,,left
+Hong Kong,HK,,left
+Heard Island and McDonald Islands,HM,,right
+Honduras,HN,es,right
+Croatia,HR,hr,right
+Haiti,HT,fr,right
+Hungary,HU,,right
+Indonesia,ID,id,left
+Isle of Man,IM,,right
+India,IN,hi,left
+British Indian Ocean Territory,IO,,right
+Ireland,IE,,left
+"Iran, Islamic Republic of",IR,,right
+Iraq,IQ,ar,right
+Iceland,IS,is,right
+Israel,IL,he,right
+Italy,IT,it,right
+Jamaica,JM,,left
+Jersey,JE,,right
+Jordan,JO,ar,right
+Japan,JP,ja,left
+Kazakhstan,KZ,kk,right
+Kenya,KE,,left
+Kyrgyzstan,KG,ky,right
+Cambodia,KH,km,left
+Kiribati,KI,,left
+Saint Kitts and Nevis,KN,,right
+"Korea, Republic of",KR,,right
+Kuwait,KW,ar,right
+Lao People's Democratic Republic,LA,lo,right
+Lebanon,LB,ar,right
+Liberia,LR,,right
+Libya,LY,ar,right
+Saint Lucia,LC,,right
+Liechtenstein,LI,de,right
+Sri Lanka,LK,si,left
+Lesotho,LS,,left
+Lithuania,LT,lt,right
+Luxembourg,LU,fr,right
+Latvia,LV,lv,right
+Macao,MO,,left
+Saint Martin (French part),MF,,right
+Morocco,MA,ar,right
+Monaco,MC,fr,right
+"Moldova, Republic of",MD,,right
+Madagascar,MG,fr,right
+Maldives,MV,dv,right
+Mexico,MX,es,right
+Marshall Islands,MH,,right
+North Macedonia,MK,,right
+Mali,ML,fr,right
+Malta,MT,mt,left
+Myanmar,MM,,right
+Montenegro,ME,,right
+Mongolia,MN,mn,right
+Northern Mariana Islands,MP,,right
+Mozambique,MZ,pt,right
+Mauritania,MR,ar,right
+Montserrat,MS,,right
+Martinique,MQ,fr,right
+Mauritius,MU,,left
+Malawi,MW,,left
+Malaysia,MY,,left
+Mayotte,YT,fr,right
+Namibia,NA,,left
+New Caledonia,NC,fr,right
+Niger,NE,fr,right
+Norfolk Island,NF,,right
+Nigeria,NG,,right
+Nicaragua,NI,es,right
+Niue,NU,,right
+Netherlands,NL,nl,right
+Norway,NO,no,right
+Nepal,NP,ne,left
+Nauru,NR,,left
+New Zealand,NZ,,left
+Oman,OM,ar,right
+Pakistan,PK,,left
+Panama,PA,es,right
+Pitcairn,PN,,right
+Peru,PE,es,right
+Philippines,PH,,right
+Palau,PW,,right
+Papua New Guinea,PG,,left
+Poland,PL,pl,right
+Puerto Rico,PR,es,right
+"Korea, Democratic People's Republic of",KP,,right
+Portugal,PT,pt,right
+Paraguay,PY,es,right
+"Palestine, State of",PS,,right
+French Polynesia,PF,fr,right
+Qatar,QA,ar,right
+Réunion,RE,fr,right
+Romania,RO,ro,right
+Russian Federation,RU,ru,right
+Rwanda,RW,rw,right
+Saudi Arabia,SA,ar,right
+Sudan,SD,ar,right
+Senegal,SN,fr,right
+Singapore,SG,,left
+South Georgia and the South Sandwich Islands,GS,,right
+"Saint Helena, Ascension and Tristan da Cunha",SH,,right
+Svalbard and Jan Mayen,SJ,no,right
+Solomon Islands,SB,,left
+Sierra Leone,SL,,right
+El Salvador,SV,es,right
+San Marino,SM,it,right
+Somalia,SO,so,right
+Saint Pierre and Miquelon,PM,fr,right
+Serbia,RS,,right
+South Sudan,SS,,right
+Sao Tome and Principe,ST,,right
+Suriname,SR,nl,left
+Slovakia,SK,sk,right
+Slovenia,SI,sl,right
+Sweden,SE,sv,right
+Eswatini,SZ,,left
+Sint Maarten (Dutch part),SX,,right
+Seychelles,SC,fr,right
+Syrian Arab Republic,SY,ar,right
+Turks and Caicos Islands,TC,,right
+Chad,TD,fr,right
+Togo,TG,fr,right
+Thailand,TH,th,left
+Tajikistan,TJ,tg,right
+Tokelau,TK,,right
+Turkmenistan,TM,tk,right
+Timor-Leste,TL,,right
+Tonga,TO,,left
+Trinidad and Tobago,TT,,left
+Tunisia,TN,ar,right
+Türkiye,TR,,right
+Tuvalu,TV,,left
+"Taiwan, Province of China",TW,,right
+"Tanzania, United Republic of",TZ,,left
+Uganda,UG,,left
+Ukraine,UA,uk,right
+United States Minor Outlying Islands,UM,,right
+Uruguay,UY,es,right
+United States,US,,right
+Uzbekistan,UZ,uz,right
+Holy See (Vatican City State),VA,,right
+Saint Vincent and the Grenadines,VC,,left
+"Venezuela, Bolivarian Republic of",VE,,right
+"Virgin Islands, British",VG,,left
+"Virgin Islands, U.S.",VI,,right
+Viet Nam,VN,,right
+Vanuatu,VU,bi,right
+Wallis and Futuna,WF,fr,right
+Samoa,WS,sm,right
+Yemen,YE,ar,right
+South Africa,ZA,af,right
+Zambia,ZM,,left
+Zimbabwe,ZW,,left
