@@ -5,7 +5,7 @@ from ultralytics import YOLO
 from modules.language_ocr import detect_languages
 from modules.driving_side import analyze_driving_side
 import pandas as pd
-from modules.mark_on_map import mark_multiple_countries_with_distances, actual_coords
+from modules.mark_on_map import mark_multiple_countries_with_distances
 
 
 def cut_signs(model, cap, output_dir):
@@ -112,7 +112,7 @@ if __name__ == "__main__":
         #filter countries based on detected languages and driving side
         filtered_countries = countries_df[
             (countries_df['language-short'].isin(languages)) &
-            (countries_df['driving-side'] == driving_site)
+            (countries_df['driving-direction'] == driving_site)
         ]
 
         print(f"Filtered countries based on languages and driving side: {filtered_countries}")

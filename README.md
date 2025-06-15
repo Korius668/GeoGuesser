@@ -79,6 +79,11 @@ pip install -r requirements.txt
 
 ---
 
+## Example Usage
+```bash
+python geo_loc.py path/to/video.mp4 35.6895,139.6917
+```
+
 ## Actual Coordinates are needed to calculate distances from the given location. The coordinates should be in the format `latitude,longitude` (e.g., `35.6895,139.6917` for Tokyo, Japan).
 
 ---
