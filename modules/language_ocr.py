@@ -57,7 +57,6 @@ def detect_languages(frame_dir):
         reader_ru = easyocr.Reader(['ru'], gpu=False)
         reader_ar = easyocr.Reader(['ar'], gpu=False)
         reader_others = easyocr.Reader(other_langs, gpu=False)
-        print("EasyOCR reader  with CPU.")
 
     all_readers = [reader_ch_tra, reader_ch_sim, reader_ja, reader_ko, reader_ru, reader_ar, reader_others]
     
@@ -67,7 +66,6 @@ def detect_languages(frame_dir):
        
         if  file_name.lower().endswith((".jpg", ".png", '.jpeg')) and file_name.lower().count("different-traffic-sign")==1:
             file_path = os.path.join(frame_dir, file_name)
-            print(f"Processing file: {file_path}") 
 
             image_text_results = set()
             image = Image.open(file_path)
@@ -88,7 +86,6 @@ def detect_languages(frame_dir):
                     try:                        
                         lang_code = detect(text)
                         detected_languages_list.append(lang_code)
-                        print(f"  Detected text: '{text}' language {lang_code}")
                     except Exception as e:
                         print(f"  Error with text: {text} - {e}")
            

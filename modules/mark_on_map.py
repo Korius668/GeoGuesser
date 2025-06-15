@@ -15,6 +15,8 @@ def mark_multiple_countries_with_distances(actual_coordinates, country_codes):
     Returns:
         folium.Map: A folium map object with the marked locations and distances.
     """
+    country_codes = [country_code.upper() for country_code in country_codes]
+
     # Initialize geolocator
     geolocator = Nominatim(user_agent="geoapi")
 
@@ -59,11 +61,3 @@ def mark_multiple_countries_with_distances(actual_coordinates, country_codes):
     world_map.get_root().html.add_child(folium.Element(distance_html))
 
     return world_map
-
-# Example usage
-actual_coords = (52.2297, 21.0122)  # Example: Warsaw, Poland
-countries = ["PL", "JP", "DE"]  # List of ISO Alpha-2 codes
-map_with_distances = mark_multiple_countries_with_distances(actual_coords, countries)
-
-# Save the map to an HTML file
-map_with_distances.save("../output/map_with_multiple_distances.html")

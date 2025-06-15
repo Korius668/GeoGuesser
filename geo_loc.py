@@ -2,6 +2,11 @@ import os
 import sys
 import cv2 as cv
 from ultralytics import YOLO
+from modules.language_ocr import detect_languages
+from modules.driving_side import analyze_driving_side
+import pandas as pd
+from modules.mark_on_map import mark_multiple_countries_with_distances, actual_coords
+
 
 def cut_signs(model, cap, output_dir):
 
@@ -29,7 +34,6 @@ def cut_signs(model, cap, output_dir):
                 
             except OSError as e:
                 print(f"  Error removing {item}: {e}")
-        print(f"Finished clearing contents of '{output_dir}'.")
 
 
     while cap.isOpened():
@@ -62,12 +66,14 @@ def cut_signs(model, cap, output_dir):
     out.release()
 
 if __name__ == "__main__":
+    output_dir = ""
     try:
-        if len(sys.argv) < 2:
-            print("Użycie: python geo_loc.py <lokalizacja_video>")
+        if len(sys.argv) < 3:
+            print("Użycie: python geo_loc.py <lokalizacja_video> <aktualne_współrzędne>")
             sys.exit(1)
 
         video_path = sys.argv[1]
+        actual_coords = tuple(map(float, sys.argv[2].strip("()").split(",")))
 
         if not os.path.isfile(video_path):
             raise FileNotFoundError(f"Plik wideo nie istnieje: {video_path}")
@@ -95,3 +101,24 @@ if __name__ == "__main__":
             cap.release()
         except NameError:
             pass
+
+    if output_dir and video_path:
+        languages = detect_languages(output_dir)
+        driving_site = analyze_driving_side(video_path)
+        print(f"Detected languages: {languages}")
+        print(f"Driving side: {driving_site}")
+        countries_df = pd.read_csv('countries.csv')
+
+        #filter countries based on detected languages and driving side
+        filtered_countries = countries_df[
+            (countries_df['language-short'].isin(languages)) &
+            (countries_df['driving-side'] == driving_site)
+        ]
+
+        print(f"Filtered countries based on languages and driving side: {filtered_countries}")
+
+        if not filtered_countries.empty:
+            filtered_countries_codes = filtered_countries['country-code'].tolist()
+            mark_multiple_countries_with_distances(actual_coords, filtered_countries_codes)
+        else:
+            print("No countries match the detected languages and driving side.")
