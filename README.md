@@ -2,6 +2,10 @@
 
 This project tries to determine country where the video was recorded, by analyzing the driving side and finding the language of the text in the video frames. It uses computer vision techniques to detect the driving side and employs OCR (Optical Character Recognition) to identify languages from text in images.
 
+## Authors
+### Jakub Zając - sign detection, language detection, testing, driving side detection
+### Damian Ciura - map marking, distance calculation, testing, documentation
+
 ## Features
 1. **Driving Side Detection**: Determines whether the driving side is left or right based on video input.
 2. **Map Marking**: Marks multiple countries on a map and calculates distances from a given location.
@@ -105,3 +109,8 @@ pip install -r requirements.txt
   ```bash
   mkdir output
   ```
+
+## Does not work:
+- Does not run on macOS
+- Does not work without providing actual coordinates for results reference
+- Does not work with videos that have no text in frames
