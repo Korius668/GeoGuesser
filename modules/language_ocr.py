@@ -1,20 +1,31 @@
 import os
 from collections import Counter
 from langdetect import detect, DetectorFactory
-from langdetect.lang_detect_exception import LangDetectException
 from PIL import Image
-import matplotlib.pyplot as plt
+import easyocr
 
-def clean_unconfident(ocr_response):
-    i=0
-    while i < len(ocr_response):
-        if ocr_response[i][2]<0.5:
-            del ocr_response[i]
-        else: 
-            i+=1
-    return ocr_response 
+other_langs = ['fr', 'de', 'en']
 
-def detect_languages(frame_dir, all_readers):
+def clean_string(text):
+    cleaned_chars = []
+    for char in text:
+        if char.isalpha() or char.isspace():
+            cleaned_chars.append(char)
+    return "".join(cleaned_chars)
+
+def clean_unconfident(ocr_response, lang):
+    response = []
+    for word in ocr_response:
+        if word[2]<0.5 or word[1]=="STOP":
+            continue
+        
+        w = clean_string(word[1])
+        if lang in ['chinese', 'japanese', 'korean'] or len(w)>3:
+            response.append(w)
+        
+    return " ".join(response)
+
+def detect_languages(frame_dir):
     """
     Detects all languages present in text within PNG image frames in a given directory
     using multiple EasyOCR readers for text extraction and langdetect for language identification.
@@ -28,38 +39,60 @@ def detect_languages(frame_dir, all_readers):
               Language names are human-readable (e.g., "English", "Japanese").
     """
     DetectorFactory.seed = 0
+    try:
+        reader_ch_tra = easyocr.Reader(['ch_tra'], gpu=True)
+        reader_ch_sim = easyocr.Reader(['ch_sim'], gpu=True)
+        reader_ja = easyocr.Reader(["ja"], gpu=True)
+        reader_ko = easyocr.Reader(['ko'], gpu=True)
+        reader_ru = easyocr.Reader(['ru'], gpu=True)
+        reader_ar = easyocr.Reader(['ar'], gpu=True)
+        reader_others = easyocr.Reader(other_langs, gpu=True)
+        print("EasyOCR reader with GPU.")
+    except Exception as e:
+        print(f"Warning: GPU error for ch_tra_en reader. Falling back to CPU. Error: {e}")
+        reader_ch_tra = easyocr.Reader(['ch_tra'], gpu=False)
+        reader_ch_sim = easyocr.Reader(['ch_sim'], gpu=False)
+        reader_ja = easyocr.Reader(["ja"], gpu=False)
+        reader_ko = easyocr.Reader(['ko'], gpu=False)
+        reader_ru = easyocr.Reader(['ru'], gpu=False)
+        reader_ar = easyocr.Reader(['ar'], gpu=False)
+        reader_others = easyocr.Reader(other_langs, gpu=False)
+        print("EasyOCR reader  with CPU.")
 
+    all_readers = [reader_ch_tra, reader_ch_sim, reader_ja, reader_ko, reader_ru, reader_ar, reader_others]
+    
     detected_languages_list = []
-    print(os.listdir(frame_dir))
+
     for file_name in sorted(os.listdir(frame_dir)):
        
-        if  file_name.lower().endswith(".jpg") or file_name.lower().endswith(".png"):
+        if  file_name.lower().endswith((".jpg", ".png", '.jpeg')) and file_name.lower().count("different-traffic-sign")==1:
             file_path = os.path.join(frame_dir, file_name)
-            print(f"\nProcessing file: {file_path}") # Print current file being processed
+            print(f"Processing file: {file_path}") 
 
-            image_text_results = []
-
+            image_text_results = set()
+            image = Image.open(file_path)
             for i, reader in enumerate(all_readers):
                 try:
-                    results = reader.readtext(file_path)
+                    
+                    results = reader.readtext(image)
                     
                     if results:
-                        results = clean_unconfident(results)
-                        if len(results)>0:
-                            image_text_results.extend(results)
+                        resstr = clean_unconfident(results, reader.model_lang)
+                        if resstr!=" ":
+                            image_text_results.add(resstr)                    
                 except Exception as e:
                     print(f"  Error with Reader {i+1} on file {file_name}: {e}")
-                    # Continue to the next reader even if one fails
-
+                
             if image_text_results:
-                for (_, text, confidence) in image_text_results:
-                    try:
+                for text in image_text_results:
+                    try:                        
                         lang_code = detect(text)
                         detected_languages_list.append(lang_code)
-                        print(f"  Detected text: '{text}' (Confidence: {confidence:.2f}) -> Language: {lang_code}")
+                        print(f"  Detected text: '{text}' language {lang_code}")
                     except Exception as e:
                         print(f"  Error with text: {text} - {e}")
            
     lang_counts = Counter(detected_languages_list)
     
-    return lang_counts.most_common(1)
+    
+    return lang_counts.most_common(5) 
